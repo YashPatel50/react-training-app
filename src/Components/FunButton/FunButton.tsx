@@ -1,4 +1,5 @@
 import { ReactNode } from "react";
+import styles from "./FunButton.module.css";
 
 interface FunButtonProps {
   children: ReactNode;
@@ -12,7 +13,11 @@ const FunButton = ({
   color = "primary",
 }: FunButtonProps) => {
   return (
-    <button type="button" className={"btn btn-" + color} onClick={onClick}>
+    <button
+      type="button"
+      className={[styles.btn, styles["btn-" + color]].join(" ")}
+      onClick={onClick}
+    >
       {children}
     </button>
   );

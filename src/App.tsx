@@ -1,15 +1,11 @@
-import { useState } from "react";
-import Alert from "./Components/Alert";
 import FunButton from "./Components/FunButton";
-import ListGroup from "./Components/ListGroup";
-import { BsTiktok } from "react-icons/bs";
 
 function App() {
-  let items = ["Chicken Wrap", "Chicken Nuggets", "French Fries", "Coffee"];
-
-  const handleSelectItem = (item: string) => {
-    console.log(item);
-  };
+  //Item list for ListGroup
+  // let items = ["Chicken Wrap", "Chicken Nuggets", "French Fries", "Coffee"];
+  // const handleSelectItem = (item: string) => {
+  //   console.log(item);
+  // };
 
   //const [showAlert, setShowAlert] = useState(false);
 
@@ -43,8 +39,15 @@ function App() {
     // </>
 
     // 4. Adding icons
+    // <div>
+    //   <BsTiktok color="red" />
+    // </div>
+
+    // 5. Adding CSS to button excercise
     <div>
-      <BsTiktok color="red" />
+      <FunButton onClick={() => {}} color="primary">
+        CSS Button
+      </FunButton>
     </div>
   );
 }
