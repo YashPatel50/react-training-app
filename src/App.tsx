@@ -1,4 +1,4 @@
-import FunButton from "./Components/FunButton";
+import Like from "./Components/Like";
 
 function App() {
   //Item list for ListGroup
@@ -44,10 +44,14 @@ function App() {
     // </div>
 
     // 5. Adding CSS to button excercise
+    // <div>
+    //   <FunButton onClick={() => {}} color="primary">
+    //     CSS Button
+    //   </FunButton>
+    // </div>
+
     <div>
-      <FunButton onClick={() => {}} color="primary">
-        CSS Button
-      </FunButton>
+      <Like onClick={() => console.log("Clicked")}></Like>
     </div>
   );
 }
