@@ -2,6 +2,7 @@ import { useState } from "react";
 import Alert from "./Components/Alert";
 import FunButton from "./Components/FunButton";
 import ListGroup from "./Components/ListGroup";
+import { BsTiktok } from "react-icons/bs";
 
 function App() {
   let items = ["Chicken Wrap", "Chicken Nuggets", "French Fries", "Coffee"];
@@ -14,11 +15,11 @@ function App() {
 
   return (
     // 1. Using List Groups
-    <ListGroup
-      items={items}
-      heading="Food Name"
-      onSelectItem={handleSelectItem}
-    ></ListGroup>
+    // <ListGroup
+    //   items={items}
+    //   heading="Food Name"
+    //   onSelectItem={handleSelectItem}
+    // ></ListGroup>
 
     // 2. Using Alerts for children
     // <Alert>
@@ -40,6 +41,11 @@ function App() {
     //     Fun Button
     //   </FunButton>
     // </>
+
+    // 4. Adding icons
+    <div>
+      <BsTiktok color="red" />
+    </div>
   );
 }
 
