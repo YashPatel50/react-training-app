@@ -11,16 +11,30 @@ function App() {
   //const [showAlert, setShowAlert] = useState(false);
 
   //Testing state objects
+  // const [drink, setDrink] = useState({
+  //   title: "Americano",
+  //   price: 5,
+  // });
 
-  const [drink, setDrink] = useState({
-    title: "Americano",
-    price: 5,
+  // const handleClick = () => {
+  //   setDrink({
+  //     ...drink,
+  //     price: 6,
+  //   });
+
+  //Testing nested state objects
+  const [customer, setCustomer] = useState({
+    name: "Americano",
+    address: {
+      city: "Boston",
+      zipcode: 11111,
+    },
   });
 
   const handleClick = () => {
-    setDrink({
-      title: drink.title,
-      price: 6,
+    setCustomer({
+      ...customer,
+      address: { ...customer.address, zipcode: 99999 },
     });
   };
 
@@ -71,8 +85,8 @@ function App() {
     // </div>
 
     <div>
-      {drink.price}
       <button onClick={handleClick}>Click Me</button>
+      {customer.address.zipcode}
     </div>
   );
 }
