@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Like from "./Components/Like";
 
 function App() {
@@ -8,6 +9,20 @@ function App() {
   // };
 
   //const [showAlert, setShowAlert] = useState(false);
+
+  //Testing state objects
+
+  const [drink, setDrink] = useState({
+    title: "Americano",
+    price: 5,
+  });
+
+  const handleClick = () => {
+    setDrink({
+      title: drink.title,
+      price: 6,
+    });
+  };
 
   return (
     // 1. Using List Groups
@@ -50,8 +65,14 @@ function App() {
     //   </FunButton>
     // </div>
 
+    //6. Like Button excercise
+    // <div>
+    //   <Like onClick={() => console.log("Clicked")}></Like>
+    // </div>
+
     <div>
-      <Like onClick={() => console.log("Clicked")}></Like>
+      {drink.price}
+      <button onClick={handleClick}>Click Me</button>
     </div>
   );
 }
