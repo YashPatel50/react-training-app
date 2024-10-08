@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Like from "./Components/Like";
+import { produce } from "immer";
 
 function App() {
   //Item list for ListGroup
@@ -58,8 +59,15 @@ function App() {
   ]);
 
   const handleClick = () => {
+    // setBugs(
+    //   bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : { ...bug }))
+    // );
+
     setBugs(
-      bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : { ...bug }))
+      produce((draft) => {
+        const changingBug = draft.find((bug) => bug.id === 1);
+        if (changingBug) changingBug.fixed = true;
+      })
     );
   };
 
@@ -111,8 +119,12 @@ function App() {
 
     <div>
       <button onClick={handleClick}>Click Me</button>
-      {bugs[0].fixed.toString()}
-      {bugs[1].fixed.toString()}
+      {bugs.map((bug) => (
+        <p key={bug.id}>
+          {bug.name}
+          {bug.fixed ? "Fixed" : "New"}
+        </p>
+      ))}
     </div>
   );
 }
