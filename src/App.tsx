@@ -39,18 +39,28 @@ function App() {
   // };
 
   //Testing array state
+  // const [tags, setTags] = useState(["Walk Only", "Sleep"]);
 
-  const [tags, setTags] = useState(["Walk Only", "Sleep"]);
+  // const handleClick = () => {
+  //   //Add
+  //   setTags([...tags, "Dance"]);
+
+  //   //Remove
+  //   setTags(tags.filter((tag) => tag != "Sleep"));
+
+  //   //Upodate (changes Sleep to Sleeping)
+  //   setTags(tags.map((tag) => (tag === "Sleep" ? "Sleeping" : tag)));
+  // };
+
+  const [bugs, setBugs] = useState([
+    { id: 1, name: "Bug 1", fixed: false },
+    { id: 2, name: "Bug 2", fixed: false },
+  ]);
 
   const handleClick = () => {
-    //Add
-    setTags([...tags, "Dance"]);
-
-    //Remove
-    setTags(tags.filter((tag) => tag != "Sleep"));
-
-    //Upodate (changes Sleep to Sleeping)
-    setTags(tags.map((tag) => (tag === "Sleep" ? "Sleeping" : tag)));
+    setBugs(
+      bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : { ...bug }))
+    );
   };
 
   return (
@@ -101,7 +111,8 @@ function App() {
 
     <div>
       <button onClick={handleClick}>Click Me</button>
-      {tags}
+      {bugs[0].fixed.toString()}
+      {bugs[1].fixed.toString()}
     </div>
   );
 }
