@@ -23,19 +23,34 @@ function App() {
   //   });
 
   //Testing nested state objects
-  const [customer, setCustomer] = useState({
-    name: "Americano",
-    address: {
-      city: "Boston",
-      zipcode: 11111,
-    },
-  });
+  // const [customer, setCustomer] = useState({
+  //   name: "Americano",
+  //   address: {
+  //     city: "Boston",
+  //     zipcode: 11111,
+  //   },
+  // });
+
+  // const handleClick = () => {
+  //   setCustomer({
+  //     ...customer,
+  //     address: { ...customer.address, zipcode: 99999 },
+  //   });
+  // };
+
+  //Testing array state
+
+  const [tags, setTags] = useState(["Walk Only", "Sleep"]);
 
   const handleClick = () => {
-    setCustomer({
-      ...customer,
-      address: { ...customer.address, zipcode: 99999 },
-    });
+    //Add
+    setTags([...tags, "Dance"]);
+
+    //Remove
+    setTags(tags.filter((tag) => tag != "Sleep"));
+
+    //Upodate (changes Sleep to Sleeping)
+    setTags(tags.map((tag) => (tag === "Sleep" ? "Sleeping" : tag)));
   };
 
   return (
@@ -86,7 +101,7 @@ function App() {
 
     <div>
       <button onClick={handleClick}>Click Me</button>
-      {customer.address.zipcode}
+      {tags}
     </div>
   );
 }
