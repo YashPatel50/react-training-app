@@ -71,8 +71,18 @@ function App() {
   // };
 
   //States for multiple components
+  // const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
 
-  const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
+  const [game, setGame] = useState({
+    id: 1,
+    player: {
+      name: "John",
+    },
+  });
+
+  const handleClick = () => {
+    setGame({ ...game, player: { ...game.player, name: "Bob" } });
+  };
 
   return (
     // 1. Using List Groups
@@ -131,11 +141,16 @@ function App() {
     // </div>
 
     //7. Sharing state between components
+    // <div>
+    //   <NavBar cartItemsCount={cartItems.length}></NavBar>
+    //   <Cart cartItems={cartItems} onClear={() => setCartItems([])}></Cart>
+    // </div>
 
-    <div>
-      <NavBar cartItemsCount={cartItems.length}></NavBar>
-      <Cart cartItems={cartItems} onClear={() => setCartItems([])}></Cart>
-    </div>
+    //8. Excercise change name to someone else
+    <>
+      <div>{game.player.name}</div>
+      <button onClick={handleClick}>Change Name</button>
+    </>
   );
 }
 
