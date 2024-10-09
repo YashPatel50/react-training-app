@@ -1,7 +1,4 @@
-import { useState } from "react";
-import NavBar from "./Components/NavBar";
-import Cart from "./Components/Cart";
-import { produce } from "immer";
+import ExpendableText from "./Components/ExpendableText";
 
 function App() {
   //Item list for ListGroup
@@ -94,22 +91,22 @@ function App() {
   //   setPizza({ ...pizza, toppings: [...pizza.toppings, "Cheese"] });
   // };
 
-  const [cart, setCart] = useState({
-    discount: 0.1,
-    items: [
-      { id: 1, title: "Product1", quantity: 1 },
-      { id: 2, title: "Product2", quantity: 2 },
-    ],
-  });
+  // const [cart, setCart] = useState({
+  //   discount: 0.1,
+  //   items: [
+  //     { id: 1, title: "Product1", quantity: 1 },
+  //     { id: 2, title: "Product2", quantity: 2 },
+  //   ],
+  // });
 
-  const handleClick = () => {
-    setCart(
-      produce((draft) => {
-        const changingItem = draft.items.find((item) => item.id === 1);
-        if (changingItem) changingItem.quantity = 2;
-      })
-    );
-  };
+  // const handleClick = () => {
+  //   setCart(
+  //     produce((draft) => {
+  //       const changingItem = draft.items.find((item) => item.id === 1);
+  //       if (changingItem) changingItem.quantity = 2;
+  //     })
+  //   );
+  // };
 
   return (
     // 1. Using List Groups
@@ -187,14 +184,23 @@ function App() {
     //   <button onClick={handleClick}>Add Cheese</button>
     // </>
 
-    <>
-      {cart.items.map((item) => (
-        <li>
-          {item.id} {item.title} {item.quantity}
-        </li>
-      ))}
-      <button onClick={handleClick}>Change Quantity</button>
-    </>
+    //9. Using Immer to update quanitty
+    // <>
+    //   {cart.items.map((item) => (
+    //     <li>
+    //       {item.id} {item.title} {item.quantity}
+    //     </li>
+    //   ))}
+    //   <button onClick={handleClick}>Change Quantity</button>
+    // </>
+    <div>
+      <ExpendableText maxChars={10}>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat
+        dignissimos eos, officiis vero cupiditate iure nihil ratione provident,
+        quam exercitationem harum illum accusamus fuga et quisquam consectetur
+        facere sint totam!
+      </ExpendableText>
+    </div>
   );
 }
 
