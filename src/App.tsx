@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NavBar from "./Components/NavBar";
 import Cart from "./Components/Cart";
+import { produce } from "immer";
 
 function App() {
   //Item list for ListGroup
@@ -84,13 +85,30 @@ function App() {
   //   setGame({ ...game, player: { ...game.player, name: "Bob" } });
   // };
 
-  const [pizza, setPizza] = useState({
-    name: "Spicy Pepperoni",
-    toppings: ["Mushroom"],
+  // const [pizza, setPizza] = useState({
+  //   name: "Spicy Pepperoni",
+  //   toppings: ["Mushroom"],
+  // });
+
+  // const handleClick = () => {
+  //   setPizza({ ...pizza, toppings: [...pizza.toppings, "Cheese"] });
+  // };
+
+  const [cart, setCart] = useState({
+    discount: 0.1,
+    items: [
+      { id: 1, title: "Product1", quantity: 1 },
+      { id: 2, title: "Product2", quantity: 2 },
+    ],
   });
 
   const handleClick = () => {
-    setPizza({ ...pizza, toppings: [...pizza.toppings, "Cheese"] });
+    setCart(
+      produce((draft) => {
+        const changingItem = draft.items.find((item) => item.id === 1);
+        if (changingItem) changingItem.quantity = 2;
+      })
+    );
   };
 
   return (
@@ -161,12 +179,21 @@ function App() {
     //   <button onClick={handleClick}>Change Name</button>
     // </>
 
+    // <>
+    //   <div>{pizza.name}</div>
+    //   {pizza.toppings.map((topping) => (
+    //     <li>{topping}</li>
+    //   ))}
+    //   <button onClick={handleClick}>Add Cheese</button>
+    // </>
+
     <>
-      <div>{pizza.name}</div>
-      {pizza.toppings.map((topping) => (
-        <li>{topping}</li>
+      {cart.items.map((item) => (
+        <li>
+          {item.id} {item.title} {item.quantity}
+        </li>
       ))}
-      <button onClick={handleClick}>Add Cheese</button>
+      <button onClick={handleClick}>Change Quantity</button>
     </>
   );
 }
