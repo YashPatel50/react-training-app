@@ -73,15 +73,24 @@ function App() {
   //States for multiple components
   // const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
 
-  const [game, setGame] = useState({
-    id: 1,
-    player: {
-      name: "John",
-    },
+  // const [game, setGame] = useState({
+  //   id: 1,
+  //   player: {
+  //     name: "John",
+  //   },
+  // });
+
+  // const handleClick = () => {
+  //   setGame({ ...game, player: { ...game.player, name: "Bob" } });
+  // };
+
+  const [pizza, setPizza] = useState({
+    name: "Spicy Pepperoni",
+    toppings: ["Mushroom"],
   });
 
   const handleClick = () => {
-    setGame({ ...game, player: { ...game.player, name: "Bob" } });
+    setPizza({ ...pizza, toppings: [...pizza.toppings, "Cheese"] });
   };
 
   return (
@@ -147,9 +156,17 @@ function App() {
     // </div>
 
     //8. Excercise change name to someone else
+    // <>
+    //   <div>{game.player.name}</div>
+    //   <button onClick={handleClick}>Change Name</button>
+    // </>
+
     <>
-      <div>{game.player.name}</div>
-      <button onClick={handleClick}>Change Name</button>
+      <div>{pizza.name}</div>
+      {pizza.toppings.map((topping) => (
+        <li>{topping}</li>
+      ))}
+      <button onClick={handleClick}>Add Cheese</button>
     </>
   );
 }
