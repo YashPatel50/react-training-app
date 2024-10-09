@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Like from "./Components/Like";
-import { produce } from "immer";
+import NavBar from "./Components/NavBar";
+import Cart from "./Components/Cart";
 
 function App() {
   //Item list for ListGroup
@@ -52,24 +52,27 @@ function App() {
   //   //Upodate (changes Sleep to Sleeping)
   //   setTags(tags.map((tag) => (tag === "Sleep" ? "Sleeping" : tag)));
   // };
+  // const [bugs, setBugs] = useState([
+  //   { id: 1, name: "Bug 1", fixed: false },
+  //   { id: 2, name: "Bug 2", fixed: false },
+  // ]);
 
-  const [bugs, setBugs] = useState([
-    { id: 1, name: "Bug 1", fixed: false },
-    { id: 2, name: "Bug 2", fixed: false },
-  ]);
+  // const handleClick = () => {
+  //   // setBugs(
+  //   //   bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : { ...bug }))
+  //   // );
 
-  const handleClick = () => {
-    // setBugs(
-    //   bugs.map((bug) => (bug.id === 1 ? { ...bug, fixed: true } : { ...bug }))
-    // );
+  //   setBugs(
+  //     produce((draft) => {
+  //       const changingBug = draft.find((bug) => bug.id === 1);
+  //       if (changingBug) changingBug.fixed = true;
+  //     })
+  //   );
+  // };
 
-    setBugs(
-      produce((draft) => {
-        const changingBug = draft.find((bug) => bug.id === 1);
-        if (changingBug) changingBug.fixed = true;
-      })
-    );
-  };
+  //States for multiple components
+
+  const [cartItems, setCartItems] = useState(["Product1", "Product2"]);
 
   return (
     // 1. Using List Groups
@@ -117,14 +120,21 @@ function App() {
     //   <Like onClick={() => console.log("Clicked")}></Like>
     // </div>
 
+    // <div>
+    //   <button onClick={handleClick}>Click Me</button>
+    //   {bugs.map((bug) => (
+    //     <p key={bug.id}>
+    //       {bug.name}
+    //       {bug.fixed ? "Fixed" : "New"}
+    //     </p>
+    //   ))}
+    // </div>
+
+    //7. Sharing state between components
+
     <div>
-      <button onClick={handleClick}>Click Me</button>
-      {bugs.map((bug) => (
-        <p key={bug.id}>
-          {bug.name}
-          {bug.fixed ? "Fixed" : "New"}
-        </p>
-      ))}
+      <NavBar cartItemsCount={cartItems.length}></NavBar>
+      <Cart cartItems={cartItems} onClear={() => setCartItems([])}></Cart>
     </div>
   );
 }
