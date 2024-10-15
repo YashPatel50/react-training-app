@@ -1,7 +1,9 @@
-import Form from "./Components/Form";
+import ExpenseList from "./Components/ExpenseTracker/ExpenseForm";
 
-function App() {
-  return <Form></Form>;
+export const categories = ["Groceries", "Utilities", "Entertainment"];
+
+function App2() {
+  return <ExpenseList></ExpenseList>;
 }
 
-export default App;
+export default App2;
