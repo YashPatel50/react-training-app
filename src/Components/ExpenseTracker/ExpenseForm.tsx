@@ -1,4 +1,3 @@
-import React from "react";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -35,7 +34,7 @@ const ExpenseForm = ({ onSubmit }: Props) => {
   return (
     <form
       onSubmit={handleSubmit((data) => {
-        onSubmit;
+        onSubmit(data);
         reset();
       })}
     >
