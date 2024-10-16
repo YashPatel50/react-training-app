@@ -1,24 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductList from "./Components/ProductList";
 
-const App3 = () => {
-  const [category, setCategory] = useState("");
+const connect = () => console.log("Connecting");
+const disconnect = () => console.log("Disconnecting");
 
-  return (
-    <div>
-      <select
-        className="form-select"
-        onChange={(event) => {
-          setCategory(event.target.value);
-        }}
-      >
-        <option value=""></option>
-        <option value="Clothing">Clothing</option>
-        <option value="Household">Household</option>
-      </select>
-      <ProductList category={category}></ProductList>
-    </div>
-  );
+const App3 = () => {
+  useEffect(() => {
+    connect();
+
+    //This should 'undo' what effect does
+    //This is clean up
+    return () => disconnect();
+  });
+
+  return <div></div>;
 };
 
 export default App3;
