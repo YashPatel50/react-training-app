@@ -10,7 +10,7 @@ const App3 = () => {
   useEffect(() => {
     setLoading(true);
 
-    const { request, cancel } = userService.getAllUsers();
+    const { request, cancel } = userService.getAll<User>();
     request
       .then((res) => {
         setUsers(res.data);
@@ -30,7 +30,7 @@ const App3 = () => {
     const originalUsers = [...users];
     setUsers(users.filter((u) => u.id !== user.id));
 
-    userService.deleteUser(user).catch((err) => {
+    userService.delete(user).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
     });
@@ -42,7 +42,7 @@ const App3 = () => {
     setUsers([...users, newUser]);
 
     userService
-      .addUser(newUser)
+      .add(newUser)
       .then((res) => setUsers([...users, res.data]))
       .catch((err) => {
         setError(err.message);
@@ -55,7 +55,7 @@ const App3 = () => {
     const updatedUser = { ...user, name: user.name + "!" };
     setUsers(users.map((u) => (u.id === user.id ? updatedUser : u)));
 
-    userService.updateUser(user).catch((err) => {
+    userService.update(user).catch((err) => {
       setError(err.message);
       setUsers(originalUsers);
     });
